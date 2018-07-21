@@ -1,9 +1,9 @@
 .PlayerTeam {
   display: flex;
   align-self: center;
-  justify-content: center;
+  margin: 0 5px;
 }
 .PlayerTeam img{
-  width: 250px;
-  height: auto;
+  width: auto;
+  height: 250px;
 }
