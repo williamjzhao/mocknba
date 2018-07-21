@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Homepage from '../components/Homepage/Homepage';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, IndexLink } from 'react-router'
@@ -8,18 +8,16 @@ import AboutPage from '../components/AboutPage/AboutPage';
 class App extends Component {
   render() {
     return (
-      <nav>
-        <Router history={hashHistory}>
-          <Route path='/' component={Container}>
-            <IndexRoute component={Homepage} />
-            <Route path='/teams' component={TeamsPage}>
-            </Route>
-            <Route path='/about' component={AboutPage} />
-            <Route path='*' component={NotFound} />
+      <Router history={hashHistory}>
+        <Route path='/'>
+          <IndexRoute component={Homepage} />
+          <Route path='/teams' component={TeamsPage}>
           </Route>
-        </Router>
-      </nav>
-    )
+          <Route path='/about' component={AboutPage} />
+          <Route path='*' component={NotFound} />
+        </Route>
+      </Router>
+    );
   }
 }
 
@@ -28,4 +26,4 @@ const Container = (props) => <div>
 </div>
 
 const NotFound = () => <h1>404.. This page is not found!</h1>
-export default App
+export default App;
