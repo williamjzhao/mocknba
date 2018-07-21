@@ -9,7 +9,7 @@ class Homepage extends Component {
     return (
       <div className={classes.Homepage}>
         <Navbar />
-        <HomepageBody />
+        <HomepageBody team='cle'/>
         <TeamButtons />
       </div>
     );

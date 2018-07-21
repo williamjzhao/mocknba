@@ -1,0 +1,9 @@
+.PlayerTeam {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+.PlayerTeam img{
+  width: 250px;
+  height: auto;
+}

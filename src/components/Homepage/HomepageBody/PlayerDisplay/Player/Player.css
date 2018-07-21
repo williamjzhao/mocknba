@@ -1,9 +1,10 @@
 .Player {
-  width: 50%;
+  width: 80%;
+  height: auto;
   background-color: #CF8F2E;
   display: block;
   box-shadow: 0 2px 1px #ccc;
   text-align: left;
-  justify-self: flex-start;
   padding: 10px 0;
+  margin: 10px;
 }

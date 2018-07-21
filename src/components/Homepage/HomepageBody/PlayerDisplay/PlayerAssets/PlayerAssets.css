@@ -1,0 +1,6 @@
+.PlayerAssets {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  align-content: center;
+}
