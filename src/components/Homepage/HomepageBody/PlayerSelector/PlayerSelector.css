@@ -1,0 +1,7 @@
+.PlayerSelector {
+  height: auto;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 20%;  
+}
