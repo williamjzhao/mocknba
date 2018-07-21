@@ -1,0 +1,7 @@
+.NavBar {
+  display: flex;
+  height: 20px;
+  background: pink;
+  margin: 10px 0;
+  padding: 20px;
+}
