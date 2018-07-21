@@ -23,14 +23,6 @@ class App extends Component {
   }
 }
 
-const Nav = () => (
-  <div>
-    <IndexLink to='/'>Home</IndexLink>&nbsp;
-    <IndexLink to='/teams'>TeamsPage</IndexLink>&nbsp;
-    <IndexLink to='/about'>About</IndexLink>&nbsp;
-  </div>
-)
-
 const Container = (props) => <div>
   {props.children}
 </div>
