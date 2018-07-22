@@ -13,8 +13,8 @@ class HomepageBody extends Component {
     this.state = {
       playerImg: playerimage,
       teamLogo: teamlogo,
-      player: 'Generic Player',
-      playerTeam: 'Harlem Globetrotters',
+      activePlayer: 'Generic Player',
+      activeTeam: 'Harlem Globetrotters',
       stats: {
   
       },
@@ -62,14 +62,14 @@ class HomepageBody extends Component {
         {
           id: 0,
           name: 'Steph Curry',
-          selected: 'false',
-          value: 'curry/steph',
+          selected: false,
+          value: 'curry/stephen',
           key: 'playersList',
         },
         {
           id: 1,
           name: 'Lebron James',
-          selected: 'false',
+          selected: false,
           value: 'james/lebron',
           key: 'playersList',
         }
@@ -77,18 +77,25 @@ class HomepageBody extends Component {
     }
   }
 
+  getPlayerAssests = (playerURL) => {
+    const imgURL = 'https://nba-players.herokuapp.com/players/' + playerURL;
+    const statsURL = 'https://nba-players.herokuapp.com/players-stats/' + playerURL;
 
-  getNewAssets = () => {
-    fetch('https://nba-players.herokuapp.com/players/curry/stephen')
+    fetch(imgURL)
       .then(response => {
-        console.log(response);
         const newImg = response.url;
         return newImg;
       }).then(newImg => {
-        const newLogo = logos('./' + this.props.team +'.png'); 
-        this.setState({playerImg: newImg, teamLogo: newLogo});
+        fetch(statsURL)
+          .then(res => {
+          const teamAbr = res.json();
+          return teamAbr;
+        }).then(teamAbr => {
+          const newTeamLogo = logos('./' + teamAbr.team_acronym +'.png'); 
+          this.setState({playerImg: newImg, teamLogo: newTeamLogo});
+        })
       });
-  }
+    }
 
   toggleSelected = (id, key) => {
     const temp = this.state[key];
@@ -100,23 +107,23 @@ class HomepageBody extends Component {
     this.setState({
       [key]: temp,
       activeId: id,
-      activeCity: temp[id].title,
+      activePlayer: temp[id].name,
     });
-    console.log(temp[id]);
-    console.log(temp[active]);
+    this.getPlayerAssests(temp[id].value);
   }
 
   render() {
     return (
       <div className={classes.HomepageBody}>
         <PlayerSelector
-          title={this.state.activeCity} 
-          list={this.state.location}
+          title={this.state.activePlayer} 
+          list={this.state.playersList}
           toggleItem={this.toggleSelected}/>
         <PlayerDisplay 
           headshot={this.state.playerImg} 
-          team={this.state.teamLogo}/>
-
+          teamLogo={this.state.teamLogo}
+          player={this.state.activePlayer}
+          team={this.state.activeTeam}/>
       </div>
     );
   }

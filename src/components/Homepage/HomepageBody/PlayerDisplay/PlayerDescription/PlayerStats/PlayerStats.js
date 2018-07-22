@@ -3,7 +3,6 @@ import classes from './PlayerStats.css';
 
 const playerStats = (props) => {
   const stats = props.stats;
-  console.log(stats);
   return (
     <Fragment>
       {stats.map(stat => (

@@ -7,7 +7,9 @@ const playerDisplay = (props) => {
   return (
     <div className={classes.Display}>
       <PlayerDescription />
-      <PlayerAssets headshot={props.headshot} team={props.team}/>
+      <PlayerAssets 
+        headshot={props.headshot} 
+        team={props.teamLogo}/>
     </div>
   );
 }

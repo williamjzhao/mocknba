@@ -45,9 +45,9 @@ class PlayerSelector extends Component {
           { list.map((item) => (
             <li 
               className={classes.listitem} 
-              key={item.title} 
+              key={item.name} 
               onClick={() => this.props.toggleItem(item.id, item.key)}>
-                {item.title} {item.selected && <FontAwesomeIcon icon={faCheck}/>}
+                {item.name} {item.selected && <FontAwesomeIcon icon={faCheck}/>}
             </li>
             ))}
           </ul> 

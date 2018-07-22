@@ -16,7 +16,6 @@
   justify-content: center;
   text-align: left;
   width: 700px;
-  background: #FF3B3F;
   border-radius: 2px;
 
 }
@@ -29,6 +28,9 @@
   align-items: center;
   background: #FF3B3F;
   border: 1px solid black;
+  border-top-left-radius: 1.5px;
+  border-top-right-radius: 1.5px;
+
 }
 
 .dd_header svg {
@@ -45,6 +47,8 @@
   margin: 0;
   position: absolute;
   border: 1px solid black;
+  border-bottom-left-radius: 1.5px;
+  border-bottom-right-radius: 1.5px;
 }
 
 .listitem {
