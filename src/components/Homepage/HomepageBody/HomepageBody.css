@@ -1,8 +1,12 @@
 .HomepageBody {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   width:100%;
-  height: 500px;
+  height: 100%;
   margin: 15px 0;
+}
+
+.HomepageBody div PlayerSelector {
+  justify-content: center;
 }

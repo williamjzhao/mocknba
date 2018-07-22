@@ -2,11 +2,15 @@
   display: flex;
   align-self: center;
   margin: 0 5px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  height: 350px;
+  width: auto;
 }
 
 .PlayerImage img{
   width: auto;
-  height: 250px;
+  height: auto;
   border: 2px solid black;
   border-radius: 10px;
 }

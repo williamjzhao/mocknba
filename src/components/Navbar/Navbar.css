@@ -1,9 +1,27 @@
 .NavBar {
   display: flex;
-  height: 20px;
-  background: pink;
+  height: 80px;
+  width: auto;
+  background: WHITE;
   margin: auto 0;
   margin-top: 0;
   margin-bottom: 15px;
-  padding: 20px;
+}
+
+.NavBar a {
+  width:100px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+  height:100%;
+  color:#FF3B3F; 
+}
+
+.NavBar a:hover {
+  background: #CAEBF2;
+}
+
+.NavBar a:focus { 
+  text-decoration: none; 
 }

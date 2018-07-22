@@ -3,5 +3,32 @@
   display: flex;
   align-self: center;
   justify-content: center;
-  width: 20%;  
+  width: 100%;  
+}
+
+.PlayerSelector select{
+  display: none; /*hide original SELECT element:*/
+  background-color: DodgerBlue;
+}
+
+.dd_wrapper {
+  background: blue;
+}
+
+.dd_header {
+  background: red;
+}
+
+.list li{
+  background: grey;
+  list-style-type: none;
+}
+
+.listitem {
+  background: green;
+  list-style-type: none;
+}
+
+.dd_headertitle {
+  background: orange;
 }

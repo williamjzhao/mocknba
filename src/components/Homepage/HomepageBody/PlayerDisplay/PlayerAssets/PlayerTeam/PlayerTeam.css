@@ -1,9 +1,12 @@
 .PlayerTeam {
   display: flex;
-  align-self: center;
+  align-items: center;
+  justify-content: center;
   margin: 0 5px;
+  height: 200px;
+  width: auto;
 }
 .PlayerTeam img{
   width: auto;
-  height: 250px;
+  height: inherit;
 }

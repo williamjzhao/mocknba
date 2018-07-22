@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classes from './PlayerStats.css';
 
 const playerStats = (props) => {
   const stats = props.stats;
   console.log(stats);
   return (
-    <div className={classes.PlayerStats}>
+    <Fragment>
       {stats.map(stat => (
         <div key={stat.stat}>
           <strong>{stat.stat}: </strong><span>{stat.value}</span>
         </div>
       ))}
-    </div>
+    </Fragment>
   );
 }
 

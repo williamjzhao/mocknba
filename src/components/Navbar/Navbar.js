@@ -4,9 +4,10 @@ import classes from './Navbar.css';
 
 const Navbar = (props) => (
   <div className={classes.NavBar}>
-    <IndexLink to='/'>Home</IndexLink>&nbsp;
-    <IndexLink to='/teams'>TeamsPage</IndexLink>&nbsp;
-    <IndexLink to='/about'>About</IndexLink>&nbsp;
+    <IndexLink style={{ textDecoration: 'none' }} to='/'>Home</IndexLink>&nbsp;
+    <IndexLink style={{ textDecoration: 'none' }} to='/teams'>Teams</IndexLink>&nbsp;
+    <IndexLink style={{ textDecoration: 'none' }} to='/about'>About</IndexLink>&nbsp;
+    <IndexLink style={{ textDecoration: 'none' }} to='/github'>Github</IndexLink>&nbsp;
   </div>
 )
 
