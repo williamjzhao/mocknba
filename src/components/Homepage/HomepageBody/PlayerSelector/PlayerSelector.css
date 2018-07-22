@@ -12,23 +12,59 @@
 }
 
 .dd_wrapper {
-  background: blue;
+  display: block;
+  justify-content: center;
+  text-align: left;
+  width: 700px;
+  background: #FF3B3F;
+  border-radius: 2px;
+
 }
 
 .dd_header {
-  background: red;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FF3B3F;
+  border: 1px solid black;
 }
 
-.list li{
-  background: grey;
+.dd_header svg {
+ margin: 15px;
+}
+
+.list{
+  background: white;
+  width: 700px;
+  height: auto;
   list-style-type: none;
+  justify-content: center;
+  padding: inherit;
+  margin: 0;
+  position: absolute;
+  border: 1px solid black;
 }
 
 .listitem {
-  background: green;
   list-style-type: none;
+  margin: 10px;
+  background: white;
+  position: relative;
+  width: auto;
 }
 
 .dd_headertitle {
-  background: orange;
+  height: 30px;
+  width: auto;
+  align-items: center;
+  display:flex;
+  margin: 15px;
+}
+
+.ok {
+  justify-content: center;
+  display: flex;
+  
 }
