@@ -6,7 +6,8 @@ import PlayerAssets from './PlayerAssets/PlayerAssets';
 const playerDisplay = (props) => {
   return (
     <div className={classes.Display}>
-      <PlayerDescription />
+      <PlayerDescription 
+        stats={props.stats}/>
       <PlayerAssets 
         headshot={props.headshot} 
         team={props.teamLogo}/>

@@ -53,10 +53,15 @@
 
 .listitem {
   list-style-type: none;
-  margin: 10px;
+  padding: 10px;
   background: white;
   position: relative;
   width: auto;
+  cursor: pointer;
+}
+
+.listitem:hover {
+  background: #CAEBF2;
 }
 
 .dd_headertitle {
@@ -71,4 +76,8 @@
   justify-content: center;
   display: flex;
   
+}
+
+.icon:hover {
+  cursor: pointer;
 }

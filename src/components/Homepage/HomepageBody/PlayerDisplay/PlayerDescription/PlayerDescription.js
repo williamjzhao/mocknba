@@ -14,7 +14,7 @@ const player = (props) => (
       title="Team"
       info="Lakers" />
     <PlayerStats 
-      stats={stats}/>
+      stats={props.stats}/>
   </div>
 );
 
