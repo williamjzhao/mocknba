@@ -1,11 +1,9 @@
 .TeamButtons {
-  background-color: grey;
   display: flex;
-  box-shadow: 0 2px 1px #ccc;
-  margin: 15px auto;
+  margin: 5px auto;
   padding: 10px 0;
   border-radius: 5px;
   width: 50%;
-  height: 200px;
+  height: auto;
   justify-content: center;
 }

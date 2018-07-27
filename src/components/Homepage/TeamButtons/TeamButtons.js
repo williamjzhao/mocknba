@@ -4,8 +4,10 @@ import classes from './TeamButtons.css';
 
 const teamButtons = (props) => (
   <div className={classes.TeamButtons}>
-    <TeamButton />
-    <TeamButton />
+    <TeamButton 
+      teamNumber = "1"/>
+    <TeamButton 
+      teamNumber = "2"/>
   </div>
 )
 

@@ -1,9 +1,10 @@
 import React from 'react';
+import classes from './TeamButton.css';
 
 const teamButton = (props) => (
-  <button>
+  <div className={classes.TeamButton}>
     Team {props.teamNumber}
-  </button>
+  </div>
   //send a post to the server or something
 )
 

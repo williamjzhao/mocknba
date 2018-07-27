@@ -1,0 +1,16 @@
+.TeamButton {
+  width: 150px;
+  display:flex;
+  height: 75px;
+  background: white;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  margin: 0 5px;
+  color: #FF3B3F;
+}
+
+.TeamButton:hover {
+  background: #CAEBF2;
+  cursor: pointer;
+}
