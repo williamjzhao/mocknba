@@ -1,15 +1,16 @@
 .PlayerImage {
   display: flex;
   align-self: center;
-  margin: 0 5px;
+  margin: 15px;
   background: #FFFFFF;
   border-radius: 10px;
-  height: 350px;
+  height: 275px;
   width: auto;
 }
 
 .PlayerImage img{
-  width: inherit;
+  width: auto;
   border: 2px solid black;
   border-radius: 10px;
+  
 }

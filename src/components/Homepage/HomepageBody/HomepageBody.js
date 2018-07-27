@@ -49,7 +49,7 @@ class HomepageBody extends PureComponent {
   // }
 
 
-  getPlayerAssests = (playerURL) => {
+  updatePlayerCard = (playerURL) => {
     const imgURL = 'https://nba-players.herokuapp.com/players/' + playerURL;
     const statsURL = 'https://nba-players.herokuapp.com/players-stats/' + playerURL;
 
@@ -60,11 +60,20 @@ class HomepageBody extends PureComponent {
       }).then(() => {
         fetch(statsURL)
           .then(res => {
-          const teamAbr = res.json();
-          return teamAbr;
-        }).then(teamAbr => {
-          const newTeamLogo = logos('./' + teamAbr.team_acronym +'.png'); 
-          this.setState({teamLogo: newTeamLogo});
+          const statsJSON = res.json();
+          return statsJSON;
+        }).then(statsJSON => {
+          const newTeamLogo = logos('./' + statsJSON.team_acronym +'.png'); 
+          this.setState({
+            teamLogo: newTeamLogo,
+            stats: {
+              name: statsJSON.name,
+              team: statsJSON.team_name,
+              fgper: statsJSON.field_goal_percentage + '%',
+              ftper: statsJSON.free_throw_percentage + '%',
+              ppg: statsJSON.points_per_game,
+            },
+          });
         })
       });
     }
@@ -86,29 +95,28 @@ class HomepageBody extends PureComponent {
 
     // temp[id].value is the player url
     console.log(temp[id].value);
-    this.getPlayerAssests(temp[id].value);
-    this.getPlayerStats(temp[id].value);
+    this.updatePlayerCard(temp[id].value);
+    // this.getPlayerStats(temp[id].value);
   }
 
-  getPlayerStats = (playerURL) => {
-    const statsURL = 'https://nba-players.herokuapp.com/players-stats/' + playerURL;
+  // getPlayerStats = (playerURL) => {
+  //   const statsURL = 'https://nba-players.herokuapp.com/players-stats/' + playerURL;
 
-    fetch(statsURL)
-      .then(response => {
+  //   fetch(statsURL)
+  //     .then(response => {
 
-        const statsJSON = response.json();
-        return statsJSON;
-      }).then(statsJSON => {
-        this.setState({stats: {
-          name: statsJSON.name,
-          team: statsJSON.team_name,
-          fgper: statsJSON.field_goal_percentage,
-          ftper: statsJSON.field_throw_percentage,
-          ppg: statsJSON.points_per_game,
-        }})
-        console.log(Object.keys(this.state.stats));
-      })
-  }
+  //       const statsJSON = response.json();
+  //       return statsJSON;
+  //     }).then(statsJSON => {
+  //       this.setState({stats: {
+  //         name: statsJSON.name,
+  //         team: statsJSON.team_name,
+  //         fgper: statsJSON.field_goal_percentage,
+  //         ftper: statsJSON.free_throw_percentage,
+  //         ppg: statsJSON.points_per_game,
+  //       }})
+  //     })
+  // }
 
   render() {
     return (
