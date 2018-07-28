@@ -18,7 +18,7 @@ class HomepageBody extends PureComponent {
       playersList: [
         {
           id: 0,
-          name: 'Steph Curry',
+          name: 'Stephen Curry',
           selected: false,
           value: 'curry/stephen',
           key: 'playersList',
@@ -32,11 +32,11 @@ class HomepageBody extends PureComponent {
         }
       ],
       stats: {
-        name: 'Generic Player',
-        team: 'Generic Team',
-        fgper: '0%',
-        ftper: '0%',
-        ppg: '0',
+        Name: 'Generic Player',
+        Team: 'Generic Team',
+        'Field Goal Percentage': '0%',
+        'Free Throw Percentage': '0%',
+        'Points Per Game': '0',
       }
     }
   }
@@ -67,11 +67,11 @@ class HomepageBody extends PureComponent {
           this.setState({
             teamLogo: newTeamLogo,
             stats: {
-              name: statsJSON.name,
-              team: statsJSON.team_name,
-              fgper: statsJSON.field_goal_percentage + '%',
-              ftper: statsJSON.free_throw_percentage + '%',
-              ppg: statsJSON.points_per_game,
+              Name: statsJSON.name,
+              Team: statsJSON.team_name,
+              'Field Goals Percentage': statsJSON.field_goal_percentage + '%',
+              'Free Throw Percentage': statsJSON.free_throw_percentage + '%',
+              'Points Per Game': statsJSON.points_per_game,
             },
           });
         })

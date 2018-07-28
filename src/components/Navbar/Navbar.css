@@ -25,3 +25,7 @@
 .NavBar a:focus { 
   text-decoration: none; 
 }
+
+.NavBar a:active {
+  background: #CAEBF2;
+}

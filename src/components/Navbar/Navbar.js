@@ -7,7 +7,7 @@ const Navbar = (props) => (
     <IndexLink style={{ textDecoration: 'none' }} to='/'>Home</IndexLink>&nbsp;
     <IndexLink style={{ textDecoration: 'none' }} to='/teams'>Teams</IndexLink>&nbsp;
     <IndexLink style={{ textDecoration: 'none' }} to='/about'>About</IndexLink>&nbsp;
-    <IndexLink style={{ textDecoration: 'none' }} to='/github'>Github</IndexLink>&nbsp;
+    <a style={{ textDecoration: 'none' }} href='//www.github.com/williamjzhao'>Github</a>&nbsp;
   </div>
 )
 
