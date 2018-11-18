@@ -1,9 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Homepage from '../components/Homepage/Homepage';
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, IndexLink } from 'react-router'
-import TeamsPage from '../components/TeamsPage/TeamsPage';
-import AboutPage from '../components/AboutPage/AboutPage';
+import { Router, Route, IndexRoute, hashHistory} from 'react-router'
 
 class App extends Component {
   render() {
@@ -11,19 +8,12 @@ class App extends Component {
       <Router history={hashHistory}>
         <Route path='/'>
           <IndexRoute component={Homepage} />
-          <Route path='/teams' component={TeamsPage}>
-          </Route>
-          <Route path='/about' component={AboutPage} />
           <Route path='*' component={NotFound} />
         </Route>
       </Router>
     );
   }
 }
-
-const Container = (props) => <div>
-  {props.children}
-</div>
 
 const NotFound = () => <h1>404.. This page is not found!</h1>
 export default App;

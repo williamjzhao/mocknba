@@ -1,0 +1,47 @@
+.Teams {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.Teams div span{
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.Teams div div{
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.teamStats {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width:12.5%;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    text-align: center;
+    margin:0;
+    padding:0;
+}
+
+.teamOne {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 30%;
+    margin-left: 20px;
+}
+
+.teamTwo {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 30%;
+    margin-right: 20px;
+}

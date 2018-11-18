@@ -1,0 +1,26 @@
+.SearchBar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    border-radius: 2px;
+    margin: 10px 0;
+}
+
+.sb_input {
+    height: 40px;
+    width: 700px;
+    text-align: center;
+    background: #FF3B3F;
+    border: 1px solid black;
+    border-top-left-radius: 1.5px;
+    border-top-right-radius: 1.5px;  
+    font-family: inherit;
+    color: black;
+    font-size: 24px;    
+    font-weight: 400;
+}
+
+.sb_input:focus {
+    outline: none;
+}

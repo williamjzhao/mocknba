@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
-import PlayerSelector from './PlayerSelector/PlayerSelector';
 import classes from './HomepageBody.css';
 import playerimage from '../../../assets/generic.png';
 import teamlogo from '../../../assets/nbalogo.png';
+import SearchBar from './SearchBar/SearchBar';
 
 const logos = require.context('../../../assets/logos',true);
 
-class HomepageBody extends PureComponent {
+class HomepageBody extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,30 +15,23 @@ class HomepageBody extends PureComponent {
       teamLogo: teamlogo,
       activePlayer: 'Generic Player',
       activeId: null,
-      playersList: [
-        {
-          id: 0,
-          name: 'Stephen Curry',
-          selected: false,
-          value: 'curry/stephen',
-          key: 'playersList',
-        },
-        {
-          id: 1,
-          name: 'Lebron James',
-          selected: false,
-          value: 'james/lebron',
-          key: 'playersList',
-        }
-      ],
       stats: {
         Name: 'Generic Player',
         Team: 'Generic Team',
         'Field Goal Percentage': '0%',
         'Free Throw Percentage': '0%',
+        '3 Point Percentage': '0%',
         'Points Per Game': '0',
-      }
+        'Assists Per Game': '0',
+        'Rebounds Per Game': '0',
+        'Steals Per Game': '0',
+        'Turnovers Per Game': '0'
+      },
     }
+
+    // this.updatePlayerCard = this.updatePlayerCard.bind(this)
+    // this.newToggle = this.newToggle.bind(this)
+
   }
 
   // getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -52,7 +45,6 @@ class HomepageBody extends PureComponent {
   updatePlayerCard = (playerURL) => {
     const imgURL = 'https://nba-players.herokuapp.com/players/' + playerURL;
     const statsURL = 'https://nba-players.herokuapp.com/players-stats/' + playerURL;
-
     fetch(imgURL)
       .then(response => {
         const newImg = response.url;
@@ -71,60 +63,47 @@ class HomepageBody extends PureComponent {
               Team: statsJSON.team_name,
               'Field Goals Percentage': statsJSON.field_goal_percentage + '%',
               'Free Throw Percentage': statsJSON.free_throw_percentage + '%',
+              '3 Point Percentage': statsJSON.three_point_percentage + '%',
               'Points Per Game': statsJSON.points_per_game,
+              'Assists Per Game': statsJSON.assists_per_game,
+              'Rebounds Per Game': statsJSON.rebounds_per_game,
+              'Steals Per Game': statsJSON.steals_per_game,
+              'Turnovers Per Game': statsJSON.turnovers_per_game
             },
           });
+          const values = [statsJSON.field_goal_percentage, statsJSON.free_throw_percentage,
+            statsJSON.three_point_percentage, statsJSON.points_per_game, statsJSON.assists_per_game, 
+            statsJSON.rebounds_per_game, statsJSON.steals_per_game, statsJSON.turnovers_per_game];
+          return values;
+        }).then((values) => {
+          this.props.getStats(values);
         })
       });
     }
 
-  toggleSelected = (id, key) => {
-    const temp = this.state[key];
-    const active = this.state.activeId;
-    temp[id].selected = !temp[id].selected;
-
+  newToggle = (playerData) => {
     // temp[active] is the currently selected player in the dropdown
-    if(active != null) {
-      temp[active].selected = !temp[active].selected;
-    }
     this.setState({
-      [key]: temp,
-      activeId: id,
-      activePlayer: temp[id].name,
-    });
+      activePlayer: playerData["name"]
+    })
+    this.props.getCurrent(playerData["name"]);
+    this.updatePlayerCard(playerData["api"]);
 
-    // temp[id].value is the player url
-    console.log(temp[id].value);
-    this.updatePlayerCard(temp[id].value);
-    // this.getPlayerStats(temp[id].value);
+    /*        <PlayerSelector
+          title={this.state.activePlayer} 
+          list={this.state.playersList}
+          toggleItem={this.toggleSelected}/>
+    */
+
+
+    // playerData["api"] should be the playerURL now
   }
-
-  // getPlayerStats = (playerURL) => {
-  //   const statsURL = 'https://nba-players.herokuapp.com/players-stats/' + playerURL;
-
-  //   fetch(statsURL)
-  //     .then(response => {
-
-  //       const statsJSON = response.json();
-  //       return statsJSON;
-  //     }).then(statsJSON => {
-  //       this.setState({stats: {
-  //         name: statsJSON.name,
-  //         team: statsJSON.team_name,
-  //         fgper: statsJSON.field_goal_percentage,
-  //         ftper: statsJSON.free_throw_percentage,
-  //         ppg: statsJSON.points_per_game,
-  //       }})
-  //     })
-  // }
 
   render() {
     return (
       <div className={classes.HomepageBody}>
-        <PlayerSelector
-          title={this.state.activePlayer} 
-          list={this.state.playersList}
-          toggleItem={this.toggleSelected}/>
+        <SearchBar
+          update={this.newToggle}/>
         <PlayerDisplay 
           headshot={this.state.playerImg} 
           teamLogo={this.state.teamLogo}
