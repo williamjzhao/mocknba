@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PlayerDisplay from './PlayerDisplay/PlayerDisplay';
-import PlayerSelector from './PlayerSelector/PlayerSelector';
 import classes from './HomepageBody.css';
 import playerimage from '../../../assets/generic.png';
 import teamlogo from '../../../assets/nbalogo.png';
@@ -16,29 +15,18 @@ class HomepageBody extends Component {
       teamLogo: teamlogo,
       activePlayer: 'Generic Player',
       activeId: null,
-      playersList: [
-        {
-          id: 0,
-          name: 'Stephen Curry',
-          selected: false,
-          value: 'curry/stephen',
-          key: 'playersList',
-        },
-        {
-          id: 1,
-          name: 'Lebron James',
-          selected: false,
-          value: 'james/lebron',
-          key: 'playersList',
-        }
-      ],
       stats: {
         Name: 'Generic Player',
         Team: 'Generic Team',
         'Field Goal Percentage': '0%',
         'Free Throw Percentage': '0%',
+        '3 Point Percentage': '0%',
         'Points Per Game': '0',
-      }
+        'Assists Per Game': '0',
+        'Rebounds Per Game': '0',
+        'Steals Per Game': '0',
+        'Turnovers Per Game': '0'
+      },
     }
 
     // this.updatePlayerCard = this.updatePlayerCard.bind(this)
@@ -55,10 +43,8 @@ class HomepageBody extends Component {
 
 
   updatePlayerCard = (playerURL) => {
-    console.log(playerURL);
     const imgURL = 'https://nba-players.herokuapp.com/players/' + playerURL;
     const statsURL = 'https://nba-players.herokuapp.com/players-stats/' + playerURL;
-    console.log(imgURL);
     fetch(imgURL)
       .then(response => {
         const newImg = response.url;
@@ -77,59 +63,30 @@ class HomepageBody extends Component {
               Team: statsJSON.team_name,
               'Field Goals Percentage': statsJSON.field_goal_percentage + '%',
               'Free Throw Percentage': statsJSON.free_throw_percentage + '%',
+              '3 Point Percentage': statsJSON.three_point_percentage + '%',
               'Points Per Game': statsJSON.points_per_game,
+              'Assists Per Game': statsJSON.assists_per_game,
+              'Rebounds Per Game': statsJSON.rebounds_per_game,
+              'Steals Per Game': statsJSON.steals_per_game,
+              'Turnovers Per Game': statsJSON.turnovers_per_game
             },
           });
+          const values = [statsJSON.field_goal_percentage, statsJSON.free_throw_percentage,
+            statsJSON.three_point_percentage, statsJSON.points_per_game, statsJSON.assists_per_game, 
+            statsJSON.rebounds_per_game, statsJSON.steals_per_game, statsJSON.turnovers_per_game];
+          return values;
+        }).then((values) => {
+          this.props.getStats(values);
         })
       });
     }
-
-  // toggleSelected = (id, key) => {
-  //   const temp = this.state[key];
-  //   const active = this.state.activeId;
-  //   temp[id].selected = !temp[id].selected;
-
-  //   // temp[active] is the currently selected player in the dropdown
-  //   if(active != null) {
-  //     temp[active].selected = !temp[active].selected;
-  //   }
-  //   this.setState({
-  //     [key]: temp,
-  //     activeId: id,
-  //     activePlayer: temp[id].name,
-  //   });
-
-  //   // temp[id].value is the player url
-  //   console.log(temp[id].value);
-  //   this.updatePlayerCard(temp[id].value);
-  //   // this.getPlayerStats(temp[id].value);
-  // }
-  // toggleSelected = (id, key) => {
-  //   const temp = this.state[key];
-  //   const active = this.state.activeId;
-  //   temp[id].selected = !temp[id].selected;
-
-  //   // temp[active] is the currently selected player in the dropdown
-  //   if(active != null) {
-  //     temp[active].selected = !temp[active].selected;
-  //   }
-  //   this.setState({
-  //     [key]: temp,
-  //     activeId: id,
-  //     activePlayer: temp[id].name,
-  //   });
-
-  //   // temp[id].value is the player url
-  //   console.log(temp[id].value);
-  //   this.updatePlayerCard(temp[id].value);
-  //   // this.getPlayerStats(temp[id].value);
-  // }
 
   newToggle = (playerData) => {
     // temp[active] is the currently selected player in the dropdown
     this.setState({
       activePlayer: playerData["name"]
     })
+    this.props.getCurrent(playerData["name"]);
     this.updatePlayerCard(playerData["api"]);
 
     /*        <PlayerSelector

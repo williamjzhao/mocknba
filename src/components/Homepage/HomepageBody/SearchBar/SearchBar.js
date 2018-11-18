@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Autocomplete from 'react-autocomplete';
 import classes from './SearchBar.css';
 import data from './names.json';
 

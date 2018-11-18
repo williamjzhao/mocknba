@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import classes from './PlayerStats.css';
 
 const playerStats = (props) => {
   let stats = props.stats;
